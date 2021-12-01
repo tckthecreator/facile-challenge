@@ -3,7 +3,7 @@ import { CreateStringDTO } from 'src/dto/createString.dto';
 
 @Injectable()
 export class EncryptsService {
-  getString(id: number) {}
+  getString(id: string) {}
 
   createString(createStringDTO: CreateStringDTO) {}
 }

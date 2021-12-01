@@ -1,8 +1,7 @@
 import { Injectable } from '@nestjs/common';
+import { CreateStringDTO } from './dto/CreateStringDTO';
 
 @Injectable()
 export class AppService {
-  getHello(): string {
-    return 'Hello World!';
-  }
+  getStringToEncrypt(createStringDTO: CreateStringDTO) {}
 }

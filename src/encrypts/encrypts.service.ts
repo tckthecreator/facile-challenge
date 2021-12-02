@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { CreateStringDTO } from 'src/dto/createString.dto';
 import { PrismaService } from 'src/prisma.service';
-import { createCipheriv, randomBytes } from 'crypto';
+import { createCipheriv, createDecipheriv, randomBytes } from 'crypto';
 
 @Injectable()
 export class EncryptsService {
@@ -20,8 +20,26 @@ export class EncryptsService {
 
     return this.prisma.post.create({
       data: {
-        encripted_name: encryptedText,
+        encripted_name: `${iv.toString('hex')}:${encryptedText}`,
       },
     });
+  }
+
+  async getString(id: number) {
+    const textEncrypted = await this.prisma.post.findUnique({
+      where: { id },
+      select: { encripted_name: true },
+    });
+
+    const parts = textEncrypted.encripted_name.split(':');
+    const decipher = createDecipheriv(
+      'aes-256-ctr',
+      process.env.PASSWORD_CRYPTO,
+      new Buffer(parts[0], 'hex'),
+    );
+    const textDescrypted =
+      decipher.update(parts[1], 'hex', 'utf-8') + decipher.final('utf-8');
+
+    return textDescrypted;
   }
 }

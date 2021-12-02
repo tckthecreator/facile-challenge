@@ -14,7 +14,7 @@ import { EncryptsService } from './encrypts.service';
 export class EncryptsController {
   constructor(private readonly encryptsService: EncryptsService) {}
 
-  @Post()
+  @Post('/create')
   createString(@Body() createStringDTO: CreateStringDTO) {
     try {
       return this.encryptsService.createString(createStringDTO);

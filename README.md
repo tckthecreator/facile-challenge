@@ -41,7 +41,7 @@ npm start
 # Usando o Postman 
 > O Postman é um API Client que facilita aos desenvolvedores criar, compartilhar, testar e documentar APIs. Isso é feito, permitindo aos usuários criar e salvar solicitações HTTP e HTTPs simples e complexas, bem como ler suas respostas.
 
-1° Passo - Baixe o Postman Desktop pelo link oficial (https://www.postman.com) e instale o Postman. Após a instalação abrir o Postman e acessar esse link (https://identity.getpostman.com/login)
+1° Passo - Baixe o Postman Desktop pelo link oficial (https://www.postman.com) e instale o Postman. Após a instalação abra o Postman e acessar esse link (https://identity.getpostman.com/login)
 
 1.2° Passo - Lembre de registar uma conta ou dar login pelo Google
 

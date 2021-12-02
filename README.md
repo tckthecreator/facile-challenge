@@ -11,7 +11,7 @@
 - Postgresql
 - Crypto
 - Prisma
-- Heroku 
+- Hospedagem na Heroku (link: https://facile-challenge-victor.herokuapp.com)
 - Banco de dados na nuvem ( Heroku Postgres)
 
 # Como instalar?
@@ -32,7 +32,7 @@ npm install
 npx prisma generate
 ```
 
-4° Passo - Inicie o servidor em localhost:3000
+4° Passo - Inicia o servidor em localhost:3000
 ```
 npm start
 ```

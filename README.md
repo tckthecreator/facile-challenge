@@ -1,73 +1,78 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo_text.svg" width="320" alt="Nest Logo" /></a>
-</p>
+# Facile-Challenge
+#### by Victor Santos
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+> Esse é meu projeto de um desafio para vaga back-end, onde é exigido que se cadastre no banco de dados uma string criptograda e quando consultada por id, retornar a string descriptografada
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
-## Description
+## Tecnologias Utilizadas
+- Typescript
+- NodeJS
+- NestJS
+- Postgresql
+- Crypto
+- Prisma
+- Banco de dados na nuvem ( Heroku Postgres)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+# Como instalar?
 
-## Installation
-
-```bash
-$ npm install
+1° Passo - Clone o repositório localmente no diretório desejado.
+```
+https://github.com/tckthecreator/facile-challenge.git
 ```
 
-## Running the app
+2° Passo - Com o seu gerenciador de pacotes favorito, instale todas as dependências.
 
-```bash
-# development
-$ npm run start
-
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+npm install
 ```
 
-## Test
-
-```bash
-# unit tests
-$ npm run test
-
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+3° Passo - Atualize o prisma
+```
+npx prisma generate
 ```
 
-## Support
+4° Passo - Inicie o servidor e acesse http://localhost:3000 para receber informações sobre as API Paths disponíveis
+```
+npm start
+```
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
 
-## Stay in touch
+# Usando o Postman 
+> O Postman é um API Client que facilita aos desenvolvedores criar, compartilhar, testar e documentar APIs. Isso é feito, permitindo aos usuários criar e salvar solicitações HTTP e HTTPs simples e complexas, bem como ler suas respostas.
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+1° Passo - Baixe o Postman Desktop pelo link oficial (https://www.postman.com) e instale o Postman. Após a instalação abrir o Postman e acessar esse link (https://identity.getpostman.com/login)
 
-## License
+1.2° Passo - Lembre de registar uma conta ou dar login pelo Google
 
-Nest is [MIT licensed](LICENSE).
+2° Passo - Localize "Start with something new" e clique no botão "Create New"
+
+3° Passo - No menu, escolha a opção "Http Request"
+
+## Agora, vamos criar um registro no banco?
+
+1° Passo - No botão dropdown, troque "GET" por "POST"
+
+2° Passo - No "Enter Request URL" cole
+```
+localhost:3000/encrypts/create
+```
+
+3° Passo - No menu abaixo do input, clique em "Body" e logo abaixo clique em "x-www-form-url-encoded"
+
+4° Passo - Em "Keys" você adicionará os campos e em "Values" os valores
+
+4.2° Passo - Lembre que o campo é: name
+
+5° Passo - Após adicionar  o campo, clique no botão "Send", na área "Response" deverá ser retornado um Código 201 e os valores criados.
+
+## Conferindo o registro criado
+
+1° Passo - Mude o "POST" para "GET"
+
+2° Passo - No "Enter Request URL" cole. OBS: no lugar do :id, coloque o id do registro
+```
+localhost:3000/encrypts/:id
+```
+
+3° Passo - Agora só apertar o botão "Send" e aguardar a resposta
+

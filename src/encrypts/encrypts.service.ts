@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, HttpException, HttpStatus } from '@nestjs/common';
 import { CreateStringDTO } from 'src/dto/createString.dto';
 import { PrismaService } from 'src/prisma.service';
 import { createCipheriv, createDecipheriv, randomBytes } from 'crypto';
@@ -26,20 +26,32 @@ export class EncryptsService {
   }
 
   async getString(id: number) {
-    const textEncrypted = await this.prisma.post.findUnique({
-      where: { id },
-      select: { encripted_name: true },
-    });
+    try {
+      const textEncrypted = await this.prisma.post.findUnique({
+        where: { id },
+      });
 
-    const parts = textEncrypted.encripted_name.split(':');
-    const decipher = createDecipheriv(
-      'aes-256-ctr',
-      process.env.PASSWORD_CRYPTO,
-      new Buffer(parts[0], 'hex'),
-    );
-    const textDescrypted =
-      decipher.update(parts[1], 'hex', 'utf-8') + decipher.final('utf-8');
+      const parts = textEncrypted.encripted_name.split(':');
+      const decipher = createDecipheriv(
+        'aes-256-ctr',
+        process.env.PASSWORD_CRYPTO,
+        Buffer.from(parts[0], 'hex'),
+      );
+      const textDescrypted =
+        decipher.update(parts[1], 'hex', 'utf-8') + decipher.final('utf-8');
 
-    return textDescrypted;
+      return {
+        id: textEncrypted.id,
+        messagem_descriptografada: textDescrypted,
+      };
+    } catch {
+      throw new HttpException(
+        {
+          status: HttpStatus.NOT_FOUND,
+          message: 'Nenhum registro com esse ID encontrado',
+        },
+        HttpStatus.NOT_FOUND,
+      );
+    }
   }
 }

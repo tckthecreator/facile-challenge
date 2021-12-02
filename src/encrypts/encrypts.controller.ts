@@ -1,4 +1,12 @@
-import { Body, Controller, Get, Param, Post } from '@nestjs/common';
+import {
+  Body,
+  Controller,
+  Get,
+  Param,
+  Post,
+  HttpException,
+  HttpStatus,
+} from '@nestjs/common';
 import { CreateStringDTO } from 'src/dto/createString.dto';
 import { EncryptsService } from './encrypts.service';
 
@@ -8,7 +16,17 @@ export class EncryptsController {
 
   @Post()
   createString(@Body() createStringDTO: CreateStringDTO) {
-    return this.encryptsService.createString(createStringDTO);
+    try {
+      return this.encryptsService.createString(createStringDTO);
+    } catch {
+      throw new HttpException(
+        {
+          status: HttpStatus.BAD_REQUEST,
+          message: 'O campo name é obrigatório',
+        },
+        HttpStatus.BAD_REQUEST,
+      );
+    }
   }
 
   @Get(':id')

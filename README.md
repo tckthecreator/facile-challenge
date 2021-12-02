@@ -11,6 +11,7 @@
 - Postgresql
 - Crypto
 - Prisma
+- Heroku 
 - Banco de dados na nuvem ( Heroku Postgres)
 
 # Como instalar?
@@ -31,7 +32,7 @@ npm install
 npx prisma generate
 ```
 
-4° Passo - Inicie o servidor e acesse http://localhost:3000 para receber informações sobre as API Paths disponíveis
+4° Passo - Inicie o servidor em localhost:3000
 ```
 npm start
 ```
@@ -54,7 +55,7 @@ npm start
 
 2° Passo - No "Enter Request URL" cole
 ```
-localhost:3000/encrypts/create
+https://crud-with-nestjs-heroku.herokuapp.com/encrypts/create
 ```
 
 3° Passo - No menu abaixo do input, clique em "Body" e logo abaixo clique em "x-www-form-url-encoded"
@@ -71,7 +72,7 @@ localhost:3000/encrypts/create
 
 2° Passo - No "Enter Request URL" cole. OBS: no lugar do :id, coloque o id do registro
 ```
-localhost:3000/encrypts/:id
+https://crud-with-nestjs-heroku.herokuapp.com/encrypts/:id
 ```
 
 3° Passo - Agora só apertar o botão "Send" e aguardar a resposta

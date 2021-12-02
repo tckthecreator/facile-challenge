@@ -55,7 +55,7 @@ npm start
 
 2° Passo - No "Enter Request URL" cole
 ```
-https://crud-with-nestjs-heroku.herokuapp.com/encrypts/create
+https://facile-challenge-victor.herokuapp.com/encrypts/create
 ```
 
 3° Passo - No menu abaixo do input, clique em "Body" e logo abaixo clique em "x-www-form-url-encoded"
@@ -72,7 +72,7 @@ https://crud-with-nestjs-heroku.herokuapp.com/encrypts/create
 
 2° Passo - No "Enter Request URL" cole. OBS: no lugar do :id, coloque o id do registro
 ```
-https://crud-with-nestjs-heroku.herokuapp.com/encrypts/:id
+https://facile-challenge-victor.herokuapp.com/encrypts/:id
 ```
 
 3° Passo - Agora só apertar o botão "Send" e aguardar a resposta
